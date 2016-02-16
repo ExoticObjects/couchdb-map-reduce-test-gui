@@ -40,7 +40,7 @@ var DocsEmittedView = React.createClass({
                     <tr className="emitted-doc" key={i}>
                         <td><b>{key_str}</b></td>
                         <td>
-                            <ObjectInspector data={doc} initialExpandedPaths={['root','root.*','root.*.*']}/>
+                            <ObjectInspector data={doc} initialExpandedPaths={['root']}/>
                         </td>
                     </tr>
                 );
@@ -50,7 +50,7 @@ var DocsEmittedView = React.createClass({
             rows.push(
                 <tr className="emitted-doc" key="1">
                     <td>
-                        <ObjectInspector data={result} initialExpandedPaths={['root','root.*','root.*.*']}/>
+                        <ObjectInspector data={result} initialExpandedPaths={['root']}/>
                     </td>
                 </tr>
             );
