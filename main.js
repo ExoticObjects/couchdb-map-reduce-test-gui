@@ -1,18 +1,16 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var PubSub = require('pubsub-js');
-var Cookies = require('js-cookie');
 var TestDocsEditor = require('./components/TestDocsEditor');
 var MapReduceEditor = require('./components/MapReduceEditor');
 var EmittedView = require('./components/EmittedView');
 var RunButton = require('./components/RunButton');
 
 
-
 var TabsView = React.createClass({
     onClickDocsTab: function(){
         // hack to get hidden CodeMirror editor to redraw
-        $('.docs-editor .CodeMirror')[0].CodeMirror.refresh()
+        $('.docs-editor .CodeMirror')[0].CodeMirror.refresh();
     },
     render: function(){
         return (
@@ -35,7 +33,6 @@ var TabsView = React.createClass({
         )
     }
 });
-
 
 ReactDOM.render(
     <div className="col-md-12">

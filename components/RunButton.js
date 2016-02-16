@@ -1,6 +1,6 @@
 var React = require('react');
 var PubSub = require('pubsub-js');
-var Cookies = require('js-cookie');
+var Basil = require('basil.js').localStorage;
 var TestDocsEditor = require('./TestDocsEditor');
 var MapReduceEditor = require('./MapReduceEditor');
 
@@ -49,17 +49,17 @@ var RunButton = React.createClass({
     onClick: function(e) {
         emitted_vals = [];
         vals_to_reduce = [];
-        var docs = JSON.parse(Cookies.get(TestDocsEditor.CK_TEST_DOCS));
+        var docs = JSON.parse(Basil.get(TestDocsEditor.CK_TEST_DOCS));
         
         var map_error, reduce_error;
         try {
             map_error = true;
-            var map_func = eval('map_code = '+ Cookies.get(MapReduceEditor.CK_MAP_CODE));
+            var map_func = eval('map_code = '+ Basil.get(MapReduceEditor.CK_MAP_CODE));
             map_error = false;
             
             // TODO check if there is reduce code
             var reduce_func = null;
-            var reduce_code = String(Cookies.get(MapReduceEditor.CK_REDUCE_CODE)).trim();
+            var reduce_code = String(Basil.get(MapReduceEditor.CK_REDUCE_CODE)).trim();
             if (reduce_code!=null && reduce_code.length>0){
                 reduce_error = true;
                 reduce_func = eval('reduce = '+ reduce_code);

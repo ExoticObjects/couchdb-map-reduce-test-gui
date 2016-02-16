@@ -1,5 +1,5 @@
 var React = require('react');
-var Cookies = require('js-cookie');
+var Basil = require('basil.js').localStorage;
 var CodeMirror = require('./CodeMirror');
 var Defaults = require('../defaults.js');
 
@@ -9,15 +9,10 @@ var TestDocsEditor = React.createClass({
     
     statics:{ CK_TEST_DOCS: CK_TEST_DOCS },
 
-    getInitialState: function() {
-        var docs_str = Cookies.get(CK_TEST_DOCS);
-        if (!docs_str){
-            docs_str = Defaults.TEST_DOCS;
-            Cookies.set(CK_TEST_DOCS, docs_str);
+    componentWillMount: function () {
+        if (!Basil.get(CK_TEST_DOCS)){
+            Basil.set(CK_TEST_DOCS, Defaults.TEST_DOCS);
         }
-        return {
-            docs: docs_str
-        };
     },
     onUpdate: function(val) {
         try {
@@ -29,22 +24,20 @@ var TestDocsEditor = React.createClass({
 
         $('#test-docs-errors').text('');
 
-        Cookies.set(CK_TEST_DOCS, val);
-        this.setState({
-            code: val
-        });
+        Basil.set(CK_TEST_DOCS, val);
     },
     render: function() {
         var options = {
             lineNumbers: true
         };
+        var code = Basil.get(CK_TEST_DOCS);
         return (
             <div className="row">
                 <div className="col-md-12">
                     <h2>Test Docs</h2>
                     <i>Enter a JSON array of documents to test against.</i>
                     <div>
-                        <CodeMirror id="test-docs" className="docs-editor" height="600" width="100%" json_mode={true} onChange={this.onUpdate} value={this.state.docs}/>
+                        <CodeMirror id="test-docs" className="docs-editor" height="600" width="100%" json_mode={true} onChange={this.onUpdate} value={code}/>
                         <div id="test-docs-errors" className="error"></div>
                     </div>
                 </div>

@@ -30,11 +30,17 @@ var DocsEmittedView = React.createClass({
                 i++;
                 var key = key_doc[0];
                 var doc = key_doc[1];
+                var key_str;
+                if (key){
+                    key_str = JSON.stringify(key);
+                } else {
+                    key_str = <i>no key</i>;
+                }
                 rows.push(
                     <tr className="emitted-doc" key={i}>
-                        <td><b>{JSON.stringify(key)}</b></td>
+                        <td><b>{key_str}</b></td>
                         <td>
-                            <ObjectInspector  data={doc} initialExpandedPaths={['root','root.*','root.*.*']}/>
+                            <ObjectInspector data={doc} initialExpandedPaths={['root','root.*','root.*.*']}/>
                         </td>
                     </tr>
                 );
@@ -44,7 +50,7 @@ var DocsEmittedView = React.createClass({
             rows.push(
                 <tr className="emitted-doc" key="1">
                     <td>
-                        <ObjectInspector  data={result} initialExpandedPaths={['root','root.*','root.*.*']}/>
+                        <ObjectInspector data={result} initialExpandedPaths={['root','root.*','root.*.*']}/>
                     </td>
                 </tr>
             );

@@ -1,5 +1,5 @@
 var React = require('react');
-var Cookies = require('js-cookie');
+var Basil = require('basil.js').localStorage;
 var CodeMirror = require('./CodeMirror');
 var Defaults = require('../defaults.js');
 
@@ -14,18 +14,11 @@ var MapReduceEditor = React.createClass({
        CK_MAP_CODE: CK_MAP_CODE,
        CK_REDUCE_CODE: CK_REDUCE_CODE
     },
-
-    getInitialState: function() {
-        map_code = Cookies.get(CK_MAP_CODE);
-        reduce_code = Cookies.get(CK_REDUCE_CODE) || '';
-        if (!map_code){
+    componentWillMount: function () {
+        if (!Basil.get(CK_MAP_CODE)){
             map_code = Defaults.MAP_CODE;
-            Cookies.set(CK_MAP_CODE, map_code);
+            Basil.set(CK_MAP_CODE, Defaults.MAP_CODE);
         }
-        return {
-            map_code: map_code,
-            reduce_code: reduce_code
-        };
     },
     onUpdateMap: function(val) {
         try {
@@ -41,10 +34,7 @@ var MapReduceEditor = React.createClass({
         }
         $('#map-errors').text(err);
 
-        Cookies.set(CK_MAP_CODE, val);
-        this.setState({
-            map_code: val
-        });
+        Basil.set(CK_MAP_CODE, val);
     },
     onUpdateReduce: function(val) {
         try {
@@ -57,25 +47,24 @@ var MapReduceEditor = React.createClass({
 
         $('#reduce-errors').text('');
 
-        Cookies.set(CK_REDUCE_CODE, val);
-        this.setState({
-            reduce_code: val
-        });
+        Basil.set(CK_REDUCE_CODE, val);
     },
     render: function() {
         var options = {
             lineNumbers: true
         };
+        var map_code = Basil.get(CK_MAP_CODE);
+        var reduce_code = Basil.get(CK_REDUCE_CODE);
         return (
             <div className="row">
                 <div className="col-md-6">
                     <h2>Map Code</h2>
-                    <CodeMirror id="map-code" className="map-editor" height="300" width="100%" onChange={this.onUpdateMap} value={this.state.map_code}/>
+                    <CodeMirror id="map-code" className="map-editor" height="300" width="100%" onChange={this.onUpdateMap} value={map_code}/>
                     <div id="map-errors" className="error"></div>
                 </div>
                 <div className="col-md-6">
                     <h2>Reduce Code</h2>
-                    <CodeMirror id="reduce-code" className="reduce-editor" height="300" width="100%" onChange={this.onUpdateReduce} value={this.state.reduce_code}/>
+                    <CodeMirror id="reduce-code" className="reduce-editor" height="300" width="100%" onChange={this.onUpdateReduce} value={reduce_code}/>
                     <div id="reduce-errors" className="error"></div>
                 </div>
             </div>
