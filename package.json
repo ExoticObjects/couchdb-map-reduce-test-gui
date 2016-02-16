@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "codemirror": "^5.11.0",
+    "js-cookie": "^2.1.0",
+    "pubsub-js": "^1.5.3",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-object-inspector": "^0.2.1"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.2",
+    "babel-preset-react": "^6.5.0",
+    "http-server": "^0.8.5",
+    "jsx-loader": "^0.13.2",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "start": "npm run serve | npm run dev",
+    "serve": "./node_modules/.bin/http-server -p 8080",
+    "dev": "webpack-dev-server --progress --colors --port 8090"
+  }
+}
