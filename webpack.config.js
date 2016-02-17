@@ -12,6 +12,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel?cacheDirectory'
+            },
+            {
+                test: /\.css$/, 
+                loader: "style-loader!css-loader" 
             }
         ]
     },

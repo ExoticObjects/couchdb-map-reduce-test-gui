@@ -5,7 +5,9 @@ var TestDocsEditor = require('./components/TestDocsEditor');
 var MapReduceEditor = require('./components/MapReduceEditor');
 var EmittedView = require('./components/EmittedView');
 var RunButton = require('./components/RunButton');
-
+require("./main.css");
+require("./node_modules/codemirror/lib/codemirror.css");
+require("./node_modules/codemirror/theme/neat.css");
 
 var TabsView = React.createClass({
     onClickDocsTab: function(){

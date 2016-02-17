@@ -1,0 +1,9 @@
+body { background: #eee; }
+.container { background: white; }
+td { vertical-align:top; }
+textarea { width: 100% }
+.error { color: red; }
+.tab-content { border: 1px solid #ddd; padding: 1%; border-top: none; }
+.ReactCodeMirror {  border: 1px solid #ddd; }
+.docs-editor textarea{ height: 600px; }
+.emitted-doc { vertical-align:top; }
