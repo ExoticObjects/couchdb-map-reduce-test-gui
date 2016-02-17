@@ -1,5 +1,5 @@
 
-module.exports.MAP_CODE = 'function(doc){\n    emit(doc._id, doc);\n}';
+module.exports.MAP_CODE = 'function(doc){\n    console.log(doc._id);\n    emit(doc._id, doc);\n}';
 
 var o = [
     {
