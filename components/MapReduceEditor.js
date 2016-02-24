@@ -59,12 +59,12 @@ var MapReduceEditor = React.createClass({
             <div className="row">
                 <div className="col-md-6">
                     <h2>Map Code</h2>
-                    <CodeMirror id="map-code" className="map-editor" height="300" width="100%" onChange={this.onUpdateMap} value={map_code}/>
+                    <CodeMirror id="map-code" className="map-editor" height="50vh" width="100%" onChange={this.onUpdateMap} value={map_code}/>
                     <div id="map-errors" className="error"></div>
                 </div>
                 <div className="col-md-6">
                     <h2>Reduce Code</h2>
-                    <CodeMirror id="reduce-code" className="reduce-editor" height="300" width="100%" onChange={this.onUpdateReduce} value={reduce_code}/>
+                    <CodeMirror id="reduce-code" className="reduce-editor" height="50vh" width="100%" onChange={this.onUpdateReduce} value={reduce_code}/>
                     <div id="reduce-errors" className="error"></div>
                 </div>
             </div>
