@@ -3,3 +3,4 @@ test_code.txt
 node_modules/
 deploy.sh
 js/bundle.js
+*.sublime-*
