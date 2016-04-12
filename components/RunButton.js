@@ -93,7 +93,7 @@ var RunButton = React.createClass({
             $(sel).text(e);
             return;
         }
-        PubSub.publish( MAPREDUCE_RESULT, result );
+        PubSub.publish( MAPREDUCE_RESULT, {result:result, isReduced: do_reduce});
     },
     render: function() {
         return <div style={{padding:'10px'}}>

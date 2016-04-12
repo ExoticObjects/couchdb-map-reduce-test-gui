@@ -21,8 +21,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "npm run serve | npm run dev",
-    "serve": "./node_modules/.bin/http-server -p 8080",
+    "start": "npm run server | npm run dev",
+    "server": "./node_modules/.bin/http-server -p 8080",
     "dev": "webpack-dev-server --progress --colors --port 8090"
   }
 }

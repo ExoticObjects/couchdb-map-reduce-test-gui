@@ -8,10 +8,8 @@ var DocsEmittedView = React.createClass({
     getInitialState: function() {
         return {result: []};
     },
-    onResult: function(msg, result){
-        this.setState({
-            result: result
-        });
+    onResult: function(msg, o){
+        this.setState(o);
     },
     componentDidMount: function() {
         this.sub_token = PubSub.subscribe(RunButton.MAPREDUCE_RESULT, this.onResult );
@@ -22,8 +20,10 @@ var DocsEmittedView = React.createClass({
     render: function() {
         var rows = [];
         var result = this.state.result;
+        var isReduced = this.state.isReduced;
         var title;
-        if (result && result.push){
+
+        if (result && !isReduced){
             title = result.length + ' Emitted';
             var i=-1;
             result.forEach(function(key_doc) {
